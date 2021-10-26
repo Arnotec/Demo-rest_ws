@@ -51,7 +51,7 @@ public class AccountRestJaxRSAPI {
     @Path("/accounts/{id}")
     @DELETE
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public void create(Long id) {
+    public void delete(@PathParam("id") Long id) {
         accountRepository.deleteById(id);
     }
 }
