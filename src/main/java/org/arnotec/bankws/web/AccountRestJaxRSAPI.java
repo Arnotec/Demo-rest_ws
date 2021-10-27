@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 
 import java.util.List;
 
-@Component
+//@Component
 @Path("/bank")
 public class AccountRestJaxRSAPI {
 
