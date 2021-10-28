@@ -6,6 +6,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter;
 
 @Configuration
 public class MyConfig {
@@ -19,6 +20,13 @@ public class MyConfig {
         ResourceConfig jerseyConfig = new ResourceConfig();
         jerseyConfig.register(AccountRestJaxRSAPI.class);
         return jerseyConfig;
+    }
+
+    @Bean
+    public SimpleJaxWsServiceExporter serviceExporter() {
+        SimpleJaxWsServiceExporter exporter = new SimpleJaxWsServiceExporter();
+        exporter.setBaseAddress("http://0.0.0.0:8181");
+        return exporter;
     }
 
 
