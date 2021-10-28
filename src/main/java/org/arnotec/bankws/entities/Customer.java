@@ -5,22 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.Collection;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Account {
+@Entity
+public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private double solde;
-    @Temporal(TemporalType.DATE)
-    private Date dateCreation;
-    @Enumerated(EnumType.STRING)
-    @Column(length = 10)
-    private TypeAccount type;
-    @ManyToOne
-    private Customer customer;
+    private String name;
+    @OneToMany(mappedBy = "customer")
+    private Collection<Account> accounts;
 }
